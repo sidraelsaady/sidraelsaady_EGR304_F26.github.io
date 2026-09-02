@@ -5,13 +5,13 @@ tags:
 - tag2
 ---
 <center>
-<font size= "6">(Sidra Elsaady) Datasheet</font><br>
+<font size= "6">Sidra Elsaady Datasheet</font><br>
 as part of<br>
 <font size= "8"> Project Name</font><br>
 for<br>
 <font size= "5"> Team 202 </font><br>
 
-**Submission: september, 02, 2026**
+**Submission: September, 02, 2026**
 </center>
 
 ## Introduction
