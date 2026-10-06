@@ -26,7 +26,7 @@
 
     
       
-        <title>Individal Block Diagram - EGR 304 Data Sheet Template</title>
+        <title>Individual Block Diagram - EGR 304 Data Sheet Template</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Individal Block Diagram
+              Individual Block Diagram
             
           </span>
         </div>
@@ -471,7 +471,7 @@
           
   
   <span class="md-ellipsis">
-    Individal Block Diagram
+    Individual Block Diagram
   </span>
   
 
@@ -482,7 +482,7 @@
         
   
   <span class="md-ellipsis">
-    Individal Block Diagram
+    Individual Block Diagram
   </span>
   
 
@@ -511,9 +511,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-block-diagram" class="md-nav__link">
+  <a href="#block-diagram" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Block Diagram
+      Block Diagram
     </span>
   </a>
   
@@ -809,9 +809,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-block-diagram" class="md-nav__link">
+  <a href="#block-diagram" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Block Diagram
+      Block Diagram
     </span>
   </a>
   
@@ -840,21 +840,20 @@
   
 
 
-  <h1>Individal Block Diagram</h1>
+  <h1>Individual Block Diagram</h1>
 
 <h2 id="overview">Overview</h2>
-<p>This needs to be updated with a brief purpose for having the block diagram.
-Things to mention are:
-* power levels
-* sensor
-* Actuator
-* team connections
-* Power source
-* ...</p>
-<p>To get some initial formatting help, one can view <a href="https://embedded-systems-design.github.io/EGR304DataSheetTemplate/Appendix/basic-markdown-examples/">"here"</a> some basic techniques.</p>
-<h2 id="example-block-diagram">Example Block Diagram</h2>
-<p>Showing an example of how to import a screenshot of the block diagram created outside of git and brought into a page.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../individual-block-diagram.png" data-desc-position="bottom"><img alt="Example of Indivial Block diagram " src="../individual-block-diagram.png"></a></p>
+<p>This page shows the block diagram for my subsystem on Team 202's Environmental Monitoring Device. My board measures relative humidity and sends the reading to Zander Boward's hub board, which shows it on the LCD.</p>
+<ul>
+<li><strong>Power levels:</strong> A 9 V DC wall adapter powers the board through a barrel jack. An STMicroelectronics L7805CV linear regulator steps this down to a regulated 5 V (1.5 A max), which powers the Curiosity Nano, the humidity sensor, and the op amp.</li>
+<li><strong>Sensor:</strong> A Sensirion SHT31-ARP-B humidity sensor outputs an analog voltage from 0.5 V (0 %RH) to 4.5 V (100 %RH). The signal passes through an op amp buffer (Microchip MCP6001T-I/OT) and a passive RC low-pass filter (fc ≈ 16 Hz) before reaching the ADC on pin RA0 of the PIC18F57Q43.</li>
+<li><strong>Actuator:</strong> None. This subsystem is sensing only.</li>
+<li><strong>Team connections:</strong> Connector 1 (2x4 IDC, 8-wire ribbon cable) connects to Zander's hub board. Pin 1 sends humidity data to the hub (UART TX, RC2), pin 2 receives data from the hub (UART RX, RC3), pin 8 is ground, and pins 3-7 are not connected.</li>
+<li><strong>Power source:</strong> 9 V DC wall adapter through a CUI Devices PJ-002A barrel jack.</li>
+</ul>
+<h2 id="block-diagram">Block Diagram</h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../sidra_block_diagram.png" data-desc-position="bottom"><img alt="Individual block diagram for the humidity sensing subsystem" src="../sidra_block_diagram.png"></a></p>
+<p><a href="sidra_block_diagram.drawio">Download the draw.io source file</a></p>
 
 
 
