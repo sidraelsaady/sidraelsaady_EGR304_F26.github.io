@@ -33,7 +33,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 1. Sensirion SHT31-ARP-B analog humidity/temperature sensor
 
-    ![SHT31-ARP-B]({{ '/sht31-arp-b.jpg' | relative_url }})
+    ![SHT31-ARP-B](sht31-arp-b.jpg)
 
     * $5.00/each (Digi-Key)
     * [SHT31-ARP-B on Digi-Key](https://www.digikey.com/en/products/detail/sensirion-ag/SHT31-ARP-B/5872251)
@@ -50,7 +50,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 1. Honeywell HIH-4000-001 analog humidity sensor
 
-    ![HIH-4000-001]({{ '/hih-4000-001.jpg' | relative_url }})
+    ![HIH-4000-001](hih-4000-001.jpg)
 
     * $241.59/each (Digi-Key)
     * [HIH-4000-001 on Digi-Key](https://www.digikey.com/en/products/detail/honeywell-sensing-and-productivity-solutions/HIH-4000-001/859092)
@@ -64,7 +64,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 1. Custom: TE Connectivity HPP801A031 (HS1101LF) capacitive humidity sensor + 555 timer oscillator
 
-    ![HS1101LF]({{ '/hs1101lf.jpg' | relative_url }})
+    ![HS1101LF](hs1101lf.jpg)
 
     * about $9 in total
     * [HPP801A031 (HS1101LF) on Digi-Key](https://www.digikey.com/en/products/detail/HS1101LF/HS1101LF-ND/697731)
@@ -86,7 +86,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 1. Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)
 
-    ![MCP6001T-I/OT]({{ '/mcp6001.jpg' | relative_url }})
+    ![MCP6001T-I/OT](mcp6001.jpg)
 
     * =$0.30/each
     * [MCP6001T-I/OT on Digi-Key](https://www.digikey.com/en/products/result?keywords=MCP6001T-I%2FOT)
@@ -101,7 +101,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 1. Microchip MCP6002-I/P dual rail-to-rail op amp (PDIP-8)
 
-    ![MCP6002-I/P]({{ '/mcp6002.jpg' | relative_url }})
+    ![MCP6002-I/P](mcp6002.jpg)
 
     * = $0.45/each
     * [MCP6002-I/P on Digi-Key](https://www.digikey.com/en/products/result?keywords=MCP6002-I%2FP)
@@ -114,7 +114,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 1. Texas Instruments LM358P dual general-purpose op amp (PDIP-8)
 
-    ![LM358P]({{ '/lm358p.jpg' | relative_url }})
+    ![LM358P](lm358p.jpg)
 
     * = $0.35/each
     * [LM358P on Digi-Key](https://www.digikey.com/en/products/result?keywords=LM358P)
@@ -171,7 +171,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 1. STMicroelectronics L7805CV 5 V linear regulator (TO-220)
 
-    ![L7805CV]({{ '/l7805cv.jpg' | relative_url }})
+    ![L7805CV](l7805cv.jpg)
 
     * $1.08/each (Digi-Key)
     * [L7805CV on Digi-Key](https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964)
@@ -185,7 +185,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 1. Texas Instruments LM2940CT-5.0 low-dropout regulator (TO-220)
 
-    ![LM2940CT-5.0]({{ '/lm2940.jpg' | relative_url }})
+    ![LM2940CT-5.0](lm2940.jpg)
 
     * $0.71/each at 1,000 units from TI (LM2940CT-5.0/NOPB); about $2.04 for one from Mouser
     * [LM2940CT-5.0 on Texas Instruments](https://www.ti.com/product/LM2940C)
@@ -198,7 +198,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 1. STMicroelectronics LD1117V50 5 V LDO (TO-220)
 
-    ![LD1117V50]({{ '/ld1117v50.jpg' | relative_url }})
+    ![LD1117V50](ld1117v50.jpg)
 
     * $0.57/each (Digi-Key)
     * [LD1117V50 on Digi-Key](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V50/1663515)
@@ -219,7 +219,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 1. CUI Devices SWI12-9-N-P5 9 V 1.2 A wall adapter (5.5 × 2.1 mm plug)
 
-    ![SWI12-9-N-P5]({{ '/swi12-9.jpg' | relative_url }})
+    ![SWI12-9-N-P5](swi12-9.jpg)
 
     * =$17.59/each
     * [SWI12-9-N-P5 on Digi-Key](https://www.digikey.com/en/products/result?keywords=SWI12-9-N-P5)
@@ -233,7 +233,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 1. Bel Power Solutions  SWI6-9-N-P5 9 V 0.67 A wall adapter
 
-    ![SWI6-9-N-P5]({{ '/swi6-9.jpg' | relative_url }})
+    ![SWI6-9-N-P5](swi6-9.jpg)
 
     * $16.13/each (Digi-Key)
     * [SWI6-9-N-P5 on Digi-Key](https://www.digikey.com/en/products/detail/bel-power-solutions/SWI6-9-N-P5/5415074)
@@ -246,7 +246,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 1. Adafruit 248 6 × AA battery holder with 5.5 × 2.1 mm plug (=9 V)
 
-    ![6xAA holder]({{ '/6aa-holder.jpg' | relative_url }})
+    ![6xAA holder](6aa-holder.jpg)
 
     * $2.50/each + batteries
     * [Adafruit 6 × AA holder](https://www.adafruit.com/product/248)
@@ -278,7 +278,4 @@ The filter block is built from passives, which the assignment excludes. It is in
 Connector 1 pins 3–7 are not connected.
 
 ---
-
-
-
 
