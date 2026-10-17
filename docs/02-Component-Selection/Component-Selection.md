@@ -25,7 +25,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 | Assembly | Hand-solderable by the team; avoid QFN and smaller where possible | Assignment guidance / PR 5.1 |
 | Availability | In stock at an authorized distributor at time of order | PR 5.2 |
 
-*Prices are qty-1 prices from authorized distributors (Mouser, Newark, Arrow) as of October 2026 and should be rechecked when ordering.*
+*Prices are qty-1 prices from authorized distributors as of October 2026 and should be rechecked when ordering.*
 
 ---
 
