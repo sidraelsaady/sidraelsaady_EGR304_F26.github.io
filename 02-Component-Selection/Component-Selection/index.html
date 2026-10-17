@@ -606,15 +606,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compatibility-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compatibility Check
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pin-table-pic18f57q43-curiosity-nano" class="md-nav__link">
     <span class="md-ellipsis">
       Pin Table — PIC18F57Q43 Curiosity Nano
@@ -923,15 +914,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compatibility-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compatibility Check
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pin-table-pic18f57q43-curiosity-nano" class="md-nav__link">
     <span class="md-ellipsis">
       Pin Table — PIC18F57Q43 Curiosity Nano
@@ -975,7 +957,7 @@
 <h1 id="component-selection">Component Selection</h1>
 <p><strong>Team 202: Environmental Monitoring Device</strong>
 <strong>Sidra Elsaady: Humidity Sensing Subsystem (Sensor)</strong></p>
-<p>This page compares at least three candidate solutions for each major block in my subsystem's block diagram, then gives the part I selected and why. Every selection below belongs to the <strong>Humidity Sensing Subsystem</strong> unless noted otherwise.</p>
+<p>This page compares at least three candidate solutions for each major block in my subsystem's block diagram, then gives the part I selected and why. Every selection below belongs to the Humidity Sensing Subsystem unless noted otherwise.</p>
 <p>The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get a selection table (it is still included in the power budget). Passives, connectors, pushbuttons, standard LEDs and fuses are excluded from the assignment.</p>
 <h2 id="design-constraints-used-to-judge-options">Design Constraints Used to Judge Options</h2>
 <table>
@@ -1036,7 +1018,7 @@
 </table>
 <p><em>Prices are qty-1 prices from authorized distributors (Mouser, Newark, Arrow) as of October 2026 and should be rechecked when ordering.</em></p>
 <hr>
-<h2 id="1-humidity-sensor-humidity-sensing-subsystem">1. Humidity Sensor — <strong>Humidity Sensing Subsystem</strong></h2>
+<h2 id="1-humidity-sensor-humidity-sensing-subsystem">1. Humidity Sensor — Humidity Sensing Subsystem</h2>
 <ol>
 <li>
 <p>Sensirion SHT31-ARP-B analog humidity/temperature sensor</p>
@@ -1156,7 +1138,7 @@
 <p><strong>Choice:</strong> Option 1: Sensirion SHT31-ARP-B</p>
 <p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key ($241.59) with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.</p>
 <hr>
-<h2 id="2-signal-buffer-op-amp-humidity-sensing-subsystem">2. Signal Buffer (Op Amp) — <strong>Humidity Sensing Subsystem</strong></h2>
+<h2 id="2-signal-buffer-op-amp-humidity-sensing-subsystem">2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem</h2>
 <ol>
 <li>
 <p>Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)</p>
@@ -1260,7 +1242,7 @@
 <p><strong>Choice:</strong> Option 1: Microchip MCP6001T-I/OT</p>
 <p><strong>Rationale:</strong> The buffer must pass the sensor's full 0.5–4.5 V output on a single 5 V supply without loading the sensor. The MCP6001's rail-to-rail input and output does this, and its 170 µA max draw barely affects the power budget. The LM358 was rejected because its output saturates around 3.5 V, which would cut off the top quarter of the humidity range. The MCP6002 is electrically equivalent and easier to solder. It stays as a drop-in backup if a second-order active filter is needed later, but for a single unity-gain buffer the smaller single-amplifier MCP6001 saves board area near the sensor.</p>
 <hr>
-<h2 id="3-low-pass-filter-humidity-sensing-subsystem">3. Low-Pass Filter — <strong>Humidity Sensing Subsystem</strong></h2>
+<h2 id="3-low-pass-filter-humidity-sensing-subsystem">3. Low-Pass Filter — Humidity Sensing Subsystem</h2>
 <p>The filter block is built from passives, which the assignment excludes. It is included here briefly because it is a block on my diagram.</p>
 <ol>
 <li>
@@ -1535,86 +1517,6 @@
 </ol>
 <p><strong>Choice:</strong> Option 1: CUI Devices SWI12-9-N-P5 9 V 1.2 A wall adapter</p>
 <p><strong>Rationale:</strong> The course requires a 9 V supply through a barrel jack, and a regulated wall adapter keeps the L7805 input steady for accurate ratiometric readings. The 1.2 A rating leaves a large margin over my 39.9 mA draw and stays below the team's 1.5 A input limit (PR 6.1). A battery pack would drop below the L7805's dropout limit partway through discharge, which would cause the 5 V rail and the humidity reading to drift.</p>
-<hr>
-<h2 id="compatibility-check">Compatibility Check</h2>
-<table>
-<thead>
-<tr>
-<th>Interface</th>
-<th>Requirement</th>
-<th>Selected parts</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Adapter → barrel jack</td>
-<td>Plug matches jack, center positive</td>
-<td>SWI12-9-N-P5 (5.5 × 2.1 mm) → PJ-002A (2.0 mm pin, 2.5 A)</td>
-<td>Check fit: 2.1 mm plugs usually seat on a 2.0 mm pin but can be loose</td>
-</tr>
-<tr>
-<td>9 V → L7805CV input</td>
-<td>Input ≥ 5 V + 2 V dropout = 7 V</td>
-<td>9 V regulated adapter</td>
-<td>OK, 2 V of extra headroom</td>
-</tr>
-<tr>
-<td>L7805CV output → 5 V rail</td>
-<td>Never above 5.5 V (PR 6.2)</td>
-<td>L7805C output 4.75–5.25 V over full load and temperature</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>5 V → Curiosity Nano</td>
-<td>VTG 1.8–5.5 V; on-board regulator must be off</td>
-<td>Power on VTG with VOFF tied to GND</td>
-<td>OK only if <strong>VOFF is tied to GND</strong> on my PCB</td>
-</tr>
-<tr>
-<td>5 V → SHT31-ARP-B</td>
-<td>VDD 2.4–5.5 V</td>
-<td>5 V rail + 100 nF decoupling</td>
-<td>OK; pins 2, 3, 7 to GND and nRESET (pin 6) to VDD</td>
-</tr>
-<tr>
-<td>5 V → MCP6001T</td>
-<td>VDD 1.8–6.0 V</td>
-<td>5 V rail + 100 nF decoupling</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>SHT31 output → op amp</td>
-<td>Load ≤ ±100 µA, ≤ 5 nF</td>
-<td>MCP6001 input draws picoamps</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>Op amp output → RC filter</td>
-<td>Must swing 0.5–4.5 V on 5 V</td>
-<td>Rail-to-rail output (within ~25 mV of rails)</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>RC filter → RA0 ADC</td>
-<td>0–VDD input; ADC reference = VDD</td>
-<td>0.5–4.5 V, ratiometric with VDD</td>
-<td>OK; e.g. R = 10 kΩ, C = 1 µF gives 15.9 Hz</td>
-</tr>
-<tr>
-<td>UART ↔ hub board</td>
-<td>Same logic level on both ends</td>
-<td>Both PICs run at 5 V; shared ground on pin 8</td>
-<td>OK</td>
-</tr>
-<tr>
-<td>Total current</td>
-<td>Below regulator and adapter ratings</td>
-<td>31.9 mA (with margin) vs 1.5 A / 1.2 A</td>
-<td>OK</td>
-</tr>
-</tbody>
-</table>
 <hr>
 <h2 id="pin-table-pic18f57q43-curiosity-nano">Pin Table — PIC18F57Q43 Curiosity Nano</h2>
 <table>
