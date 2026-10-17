@@ -1086,7 +1086,7 @@
 <p>Custom: TE Connectivity HPP801A031 (HS1101LF) capacitive humidity sensor + 555 timer oscillator</p>
 <p></p>
 <ul>
-<li>= $ 8 sensor + $1 timer</li>
+<li>about $9 in total</li>
 <li><a href="https://www.digikey.com/en/products/detail/HS1101LF/HS1101LF-ND/697731">HPP801A031 (HS1101LF) on Digi-Key</a></li>
 </ul>
 <table>
@@ -1118,7 +1118,7 @@
 </li>
 </ol>
 <p><strong>Choice:</strong> Option 1: Sensirion SHT31-ARP-B</p>
-<p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key ($241.59) with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.</p>
+<p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.</p>
 <hr>
 <h2 id="2-signal-buffer-op-amp-humidity-sensing-subsystem">2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem</h2>
 <ol>
@@ -1460,7 +1460,7 @@
 <td>Less margin if the team ever powers more than one board from one adapter</td>
 </tr>
 <tr>
-<td>Smaller and slightly less expensive than the 12 W version ($16.13 vs $17.59)</td>
+<td>Smaller and slightly less expensive than the 12 W version</td>
 <td>Requires an outlet</td>
 </tr>
 <tr>
