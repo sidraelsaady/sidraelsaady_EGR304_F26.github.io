@@ -29,7 +29,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 1. Humidity Sensor — Humidity Sensing Subsystem
+## 1. Humidity Sensor — **Humidity Sensing Subsystem**
 
 1. Sensirion SHT31-ARP-B analog humidity/temperature sensor
 
@@ -82,7 +82,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem
+## 2. Signal Buffer (Op Amp) — **Humidity Sensing Subsystem**
 
 1. Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)
 
@@ -131,7 +131,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 3. Low-Pass Filter — Humidity Sensing Subsystem
+## 3. Low-Pass Filter — **Humidity Sensing Subsystem**
 
 The filter block is built from passives, which the assignment excludes. It is included here briefly because it is a block on my diagram.
 
@@ -187,12 +187,12 @@ The filter block is built from passives, which the assignment excludes. It is in
 
     ![LM2940CT-5.0](lm2940.jpg)
 
-    * $0.71/each at 1,000 units from TI (LM2940CT-5.0/NOPB); about $2.04 for one from Mouser
+    * $0.71/each at 1,000 units from TI (LM2940CT-5.0/NOPB); about 2.04 USD for one from Mouser
     * [LM2940CT-5.0 on Texas Instruments](https://www.ti.com/product/LM2940C)
 
     | Pros | Cons |
     |---|---|
-    | Only about 0.5 V dropout, so it keeps working as a supply sags | Costs nearly twice as much as the L7805 when buying just one (about $2.04 vs $1.08) |
+    | Only about 0.5 V dropout, so it keeps working as a supply sags | Costs nearly twice as much as the L7805 when buying just one (about 2.04 USD vs 1.08 USD) |
     | Reverse-battery and overvoltage protection built in | Needs a large output capacitor (≥ 22 µF) with controlled ESR for stability |
     | 1 A output, also through-hole | Low dropout gives no benefit with a 9 V input |
 
