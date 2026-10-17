@@ -7,7 +7,7 @@ title: Component Selection
 **Team 202: Environmental Monitoring Device**
 **Sidra Elsaady: Humidity Sensing Subsystem (Sensor)**
 
-This page compares at least three candidate solutions for each major block in my subsystem's block diagram, then gives the part I selected and why. Every selection below belongs to the **Humidity Sensing Subsystem** unless noted otherwise.
+This page compares at least three candidate solutions for each major block in my subsystem's block diagram, then gives the part I selected and why. Every selection below belongs to the Humidity Sensing Subsystem unless noted otherwise.
 
 The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get a selection table (it is still included in the power budget). Passives, connectors, pushbuttons, standard LEDs and fuses are excluded from the assignment.
 
@@ -29,7 +29,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 1. Humidity Sensor — **Humidity Sensing Subsystem**
+## 1. Humidity Sensor — Humidity Sensing Subsystem
 
 1. Sensirion SHT31-ARP-B analog humidity/temperature sensor
 
@@ -82,7 +82,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 2. Signal Buffer (Op Amp) — **Humidity Sensing Subsystem**
+## 2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem
 
 1. Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)
 
@@ -131,7 +131,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 3. Low-Pass Filter — **Humidity Sensing Subsystem**
+## 3. Low-Pass Filter — Humidity Sensing Subsystem
 
 The filter block is built from passives, which the assignment excludes. It is included here briefly because it is a block on my diagram.
 
@@ -262,23 +262,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 ---
 
-## Compatibility Check
 
-| Interface | Requirement | Selected parts | Result |
-|---|---|---|---|
-| Adapter → barrel jack | Plug matches jack, center positive | SWI12-9-N-P5 (5.5 × 2.1 mm) → PJ-002A (2.0 mm pin, 2.5 A) | Check fit: 2.1 mm plugs usually seat on a 2.0 mm pin but can be loose |
-| 9 V → L7805CV input | Input ≥ 5 V + 2 V dropout = 7 V | 9 V regulated adapter | OK, 2 V of extra headroom |
-| L7805CV output → 5 V rail | Never above 5.5 V (PR 6.2) | L7805C output 4.75–5.25 V over full load and temperature | OK |
-| 5 V → Curiosity Nano | VTG 1.8–5.5 V; on-board regulator must be off | Power on VTG with VOFF tied to GND | OK only if **VOFF is tied to GND** on my PCB |
-| 5 V → SHT31-ARP-B | VDD 2.4–5.5 V | 5 V rail + 100 nF decoupling | OK; pins 2, 3, 7 to GND and nRESET (pin 6) to VDD |
-| 5 V → MCP6001T | VDD 1.8–6.0 V | 5 V rail + 100 nF decoupling | OK |
-| SHT31 output → op amp | Load ≤ ±100 µA, ≤ 5 nF | MCP6001 input draws picoamps | OK |
-| Op amp output → RC filter | Must swing 0.5–4.5 V on 5 V | Rail-to-rail output (within ~25 mV of rails) | OK |
-| RC filter → RA0 ADC | 0–VDD input; ADC reference = VDD | 0.5–4.5 V, ratiometric with VDD | OK; e.g. R = 10 kΩ, C = 1 µF gives 15.9 Hz |
-| UART ↔ hub board | Same logic level on both ends | Both PICs run at 5 V; shared ground on pin 8 | OK |
-| Total current | Below regulator and adapter ratings | 31.9 mA (with margin) vs 1.5 A / 1.2 A | OK |
-
----
 
 ## Pin Table — PIC18F57Q43 Curiosity Nano
 
