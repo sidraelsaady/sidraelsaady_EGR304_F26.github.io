@@ -279,16 +279,6 @@ Connector 1 pins 3–7 are not connected.
 
 ---
 
-## Final Selections Summary
-
-| Block | Selected Part | Subsystem | Unit Cost | Datasheet |
-|---|---|---|---|---|
-| Humidity sensor | Sensirion SHT31-ARP-B | **Humidity Sensing** | $5.00 | [SHT3x-ARP datasheet](https://www.mouser.com/pdfdocs/SHT3x-ARP_Datasheet.pdf) |
-| Signal buffer | Microchip MCP6001T-I/OT | **Humidity Sensing** | = $0.30 | [MCP6001 product page](https://www.microchip.com/en-us/product/MCP6001) |
-| Low-pass filter | Passive RC (f<sub>c</sub> = 16 Hz) | **Humidity Sensing** | = $0.10 | — |
-| 5 V regulator | STMicroelectronics L7805CV | **Humidity Sensing** power | $1.08 | [L78 datasheet](https://www.st.com/resource/en/datasheet/l78.pdf) |
-| Power source | CUI Devices SWI12-9-N-P5 | **Humidity Sensing** power | = $17.59 | [SWI12-9-N-P5 listing](https://www.digikey.com/en/products/result?keywords=SWI12-9-N-P5) |
-| Microcontroller | PIC18F57Q43 Curiosity Nano (selected by course) | All | — | [PIC18F57Q43 product page](https://www.microchip.com/en-us/product/PIC18F57Q43) |
 
 
 
