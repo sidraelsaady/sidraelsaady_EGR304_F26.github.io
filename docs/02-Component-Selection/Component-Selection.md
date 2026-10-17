@@ -66,7 +66,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
     ![HS1101LF]({{ '/hs1101lf.jpg' | relative_url }})
 
-    * =$8 sensor + $1 timer
+    * = $ 8 sensor + $1 timer
     * [HPP801A031 (HS1101LF) on Digi-Key](https://www.digikey.com/en/products/detail/HS1101LF/HS1101LF-ND/697731)
 
     | Pros | Cons |
