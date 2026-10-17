@@ -66,7 +66,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
     ![HS1101LF]({{ '/hs1101lf.jpg' | relative_url }})
 
-    * = $ 8 sensor + $1 timer
+    * about $9 in total
     * [HPP801A031 (HS1101LF) on Digi-Key](https://www.digikey.com/en/products/detail/HS1101LF/HS1101LF-ND/697731)
 
     | Pros | Cons |
@@ -78,7 +78,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 **Choice:** Option 1: Sensirion SHT31-ARP-B
 
-**Rationale:** The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key ($241.59) with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.
+**Rationale:** The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.
 
 ---
 
@@ -241,7 +241,7 @@ The filter block is built from passives, which the assignment excludes. It is in
     | Pros | Cons |
     |---|---|
     | Still about 16 times the 39.9 mA my board needs | Less margin if the team ever powers more than one board from one adapter |
-    | Smaller and slightly less expensive than the 12 W version ($16.13 vs $17.59) | Requires an outlet |
+    | Smaller and slightly less expensive than the 12 W version | Requires an outlet |
     | Same plug and polarity |  |
 
 1. Adafruit 248 6 × AA battery holder with 5.5 × 2.1 mm plug (=9 V)
