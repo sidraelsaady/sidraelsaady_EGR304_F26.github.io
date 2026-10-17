@@ -1000,7 +1000,7 @@
 </table>
 <p><em>Prices are qty-1 prices from authorized distributors as of October 2026 and should be rechecked when ordering.</em></p>
 <hr>
-<h2 id="1-humidity-sensor-humidity-sensing-subsystem">1. Humidity Sensor — Humidity Sensing Subsystem</h2>
+<h2 id="1-humidity-sensor-humidity-sensing-subsystem">1. Humidity Sensor — <strong>Humidity Sensing Subsystem</strong></h2>
 <ol>
 <li>
 <p>Sensirion SHT31-ARP-B analog humidity/temperature sensor</p>
@@ -1120,7 +1120,7 @@
 <p><strong>Choice:</strong> Option 1: Sensirion SHT31-ARP-B</p>
 <p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.</p>
 <hr>
-<h2 id="2-signal-buffer-op-amp-humidity-sensing-subsystem">2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem</h2>
+<h2 id="2-signal-buffer-op-amp-humidity-sensing-subsystem">2. Signal Buffer (Op Amp) — <strong>Humidity Sensing Subsystem</strong></h2>
 <ol>
 <li>
 <p>Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)</p>
@@ -1224,7 +1224,7 @@
 <p><strong>Choice:</strong> Option 1: Microchip MCP6001T-I/OT</p>
 <p><strong>Rationale:</strong> The buffer must pass the sensor's full 0.5–4.5 V output on a single 5 V supply without loading the sensor. The MCP6001's rail-to-rail input and output does this, and its 170 µA max draw barely affects the power budget. The LM358 was rejected because its output saturates around 3.5 V, which would cut off the top quarter of the humidity range. The MCP6002 is electrically equivalent and easier to solder. It stays as a drop-in backup if a second-order active filter is needed later, but for a single unity-gain buffer the smaller single-amplifier MCP6001 saves board area near the sensor.</p>
 <hr>
-<h2 id="3-low-pass-filter-humidity-sensing-subsystem">3. Low-Pass Filter — Humidity Sensing Subsystem</h2>
+<h2 id="3-low-pass-filter-humidity-sensing-subsystem">3. Low-Pass Filter — <strong>Humidity Sensing Subsystem</strong></h2>
 <p>The filter block is built from passives, which the assignment excludes. It is included here briefly because it is a block on my diagram.</p>
 <ol>
 <li>
@@ -1344,7 +1344,7 @@
 <p>Texas Instruments LM2940CT-5.0 low-dropout regulator (TO-220)</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../lm2940.jpg" data-desc-position="bottom"><img alt="LM2940CT-5.0" src="../lm2940.jpg"></a></p>
 <ul>
-<li>$0.71/each at 1,000 units from TI (LM2940CT-5.0/NOPB); about $2.04 for one from Mouser</li>
+<li>$0.71/each at 1,000 units from TI (LM2940CT-5.0/NOPB); about 2.04 USD for one from Mouser</li>
 <li><a href="https://www.ti.com/product/LM2940C">LM2940CT-5.0 on Texas Instruments</a></li>
 </ul>
 <table>
@@ -1357,7 +1357,7 @@
 <tbody>
 <tr>
 <td>Only about 0.5 V dropout, so it keeps working as a supply sags</td>
-<td>Costs nearly twice as much as the L7805 when buying just one (about $2.04 vs $1.08)</td>
+<td>Costs nearly twice as much as the L7805 when buying just one (about 2.04 USD vs 1.08 USD)</td>
 </tr>
 <tr>
 <td>Reverse-battery and overvoltage protection built in</td>
