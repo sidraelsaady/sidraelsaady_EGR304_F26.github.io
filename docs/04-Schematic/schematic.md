@@ -1,16 +1,6 @@
----
-title: Schematic
----
+# Schematics
 
-## Overview
+![Humidity Sensing Subsystem schematic](KiCAD304_Humidity_SE.png)
 
-This schematic is design to support .... (highlight functionally, power, and controller).
-
-
-![schematic](Screenshot.png){style width:"350" height:"300;"}
-**Figure ##:** Showing a example schematic.
-
-
-## Resouces
-
-The schematic as a PDF download is available [*here*](ExampleSchematic.pdf), and the Zip folder of the project [*here*](dummyZip.zip).
+- [Schematic PDF](KiCAD304_Humidity_SE.pdf)
+- [KiCad project ZIP (includes custom symbol and footprint libraries)](KiCAD304_Humidity_SE.zip)
