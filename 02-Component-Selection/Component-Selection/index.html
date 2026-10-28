@@ -570,9 +570,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-signal-buffer-op-amp-humidity-sensing-subsystem" class="md-nav__link">
+  <a href="#2-signal-amplifier-op-amp-humidity-sensing-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem
+      2. Signal Amplifier (Op Amp) — Humidity Sensing Subsystem
     </span>
   </a>
   
@@ -869,9 +869,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-signal-buffer-op-amp-humidity-sensing-subsystem" class="md-nav__link">
+  <a href="#2-signal-amplifier-op-amp-humidity-sensing-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Signal Buffer (Op Amp) — Humidity Sensing Subsystem
+      2. Signal Amplifier (Op Amp) — Humidity Sensing Subsystem
     </span>
   </a>
   
@@ -1120,7 +1120,7 @@
 <p><strong>Choice:</strong> Option 1: Sensirion SHT31-ARP-B</p>
 <p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.</p>
 <hr>
-<h2 id="2-signal-buffer-op-amp-humidity-sensing-subsystem">2. Signal Buffer (Op Amp) — <strong>Humidity Sensing Subsystem</strong></h2>
+<h2 id="2-signal-amplifier-op-amp-humidity-sensing-subsystem">2. Signal Amplifier (Op Amp) — <strong>Humidity Sensing Subsystem</strong></h2>
 <ol>
 <li>
 <p>Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)</p>
