@@ -24,7 +24,7 @@
 
     
       
-        <title>Welcome - EGR 304 Data Sheet Template</title>
+        <title>EGR 304 Data Sheet Template</title>
       
     
     
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome
+              Home
             
           </span>
         </div>
@@ -205,7 +205,7 @@
   
     
   
-  Welcome
+  Home
 
       </a>
     </li>
@@ -400,7 +400,7 @@
           
   
   <span class="md-ellipsis">
-    Welcome
+    Home
   </span>
   
 
@@ -411,7 +411,7 @@
         
   
   <span class="md-ellipsis">
-    Welcome
+    Home
   </span>
   
 
@@ -437,10 +437,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-summary" class="md-nav__link">
     <span class="md-ellipsis">
       Project Summary
@@ -448,25 +447,11 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#my-contribution" class="md-nav__link">
     <span class="md-ellipsis">
       My Contribution
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assignments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assignments
     </span>
   </a>
   
@@ -797,10 +782,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-summary" class="md-nav__link">
     <span class="md-ellipsis">
       Project Summary
@@ -808,25 +792,11 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#my-contribution" class="md-nav__link">
     <span class="md-ellipsis">
       My Contribution
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assignments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assignments
     </span>
   </a>
   
@@ -855,46 +825,40 @@
   
 
 
-  <h1>Welcome</h1>
+  <h1>Home</h1>
 
-<p></p><center>
-<font size="6">Sidra Elsaady Datasheet</font><br>
-as part of<br>
-<font size="8"> Project Name</font><br>
-for<br>
-<font size="5"> Team 202 </font><br><p></p>
-<p><strong>Submission: September, 02, 2026</strong>
-</p></center><p></p>
 <h2 id="introduction">Introduction</h2>
+<p>This datasheet documents the <strong>Humidity Sensing Subsystem</strong> I designed for Team 202's
+Environmental Monitoring Device in EGR 304. It walks through the design from block diagram
+to component selection, schematic, and power budget, so a reader can understand what the
+board does, why each part was chosen, and how it connects to the rest of the team's system.</p>
+<h2 id="project-summary">Project Summary</h2>
+<p>Team 202 is building an <strong>Environmental Monitoring Device</strong>: a set of four connected boards
+that each measure part of the surrounding environment and report it to a central hub board
+with an LCD display. Each teammate designs their own board, and the boards share data over
+an 8-wire ribbon cable using the class connector standard.</p>
+<p>My board measures <strong>relative humidity</strong>. A Sensirion SHT31-ARP-B analog sensor produces a
+voltage proportional to humidity, an MCP6001 op amp amplifies it, an RC low-pass filter
+removes noise, and the PIC18F57Q43 Curiosity Nano converts it to a number. The PIC then sends
+the humidity reading to Zander Boward's hub board over UART, where it is displayed.</p>
+<p>See the full system in our <a href="https://asu-egr304-2026-f-202.github.io/ASU-EGR304-2026-F-202/">team report</a>.</p>
+<h2 id="my-contribution">My Contribution</h2>
+<p>I am responsible for the humidity sensing subsystem, from sensor selection through the
+schematic and PCB. Use the sections below to navigate:</p>
 <ul>
-<li>This needs to be updated so that a reader gets an idea of the purpose of this datasheet.</li>
-</ul>
-<h3 id="project-summary">Project Summary</h3>
-<ul>
-<li>This needs to be updated to reflect <ins>your version</ins> of the team project, so when shared not via the team's report, the reader gets an idea of the direction of the project and how your work will contribute to the overall success.</li>
-<li>Add context that ties into the link to your <a href="https://embedded-systems-design.github.io/EGR304TeamTemplate/">team report.</a></li>
-</ul>
-<h3 id="my-contribution">My Contribution</h3>
-<ul>
-<li>This needs to be updated to reflect a team introduction</li>
-<li>Content should also help an unfamiliar reader navigate to areas of interest. Information like:</li>
+<li><a href="01-Block-Diagram/Block-Diagram/">Block Diagram</a>: how power and signals flow through my board</li>
+<li><a href="02-Component-Selection/Component-Selection/">Component Selection</a>: the options I compared and why I chose each part</li>
+<li><a href="03-BOM/BOM/">Bill of Materials</a>: parts list for the board</li>
+<li><a href="04-Schematic/schematic/">Schematic</a>: the full KiCad schematic with PDF and project files</li>
+<li><a href="05-Power-Budget/Power-Budget/">Power Budget</a>: current draw and regulator/fuse sizing</li>
 </ul>
 <p>To review the details listed of the material used to construct the subsection, you can review it in the <a href="https://embedded-systems-design.github.io/EGR304DataSheetTemplate/03-BOM/BOM/">"BOM"</a> section of the datasheet.</p>
-<p>For all the sections</p>
-<h2 id="assignments">Assignments</h2>
-<ul>
-<li><a href="02-Component-Selection/Component-Selection/">Component Selection</a></li>
-<li><a href="05-Power-Budget/Power-Budget/">Power Budget</a> </li>
-</ul>
 
 
 
 
 
 
-
-  
-  
 
 
 
