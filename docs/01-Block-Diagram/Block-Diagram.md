@@ -16,6 +16,6 @@ This page shows the block diagram for my subsystem on Team 202's Environmental M
 
 ## Block Diagram
 
-![Individual block diagram for the humidity sensing subsystem](sidra_block_diagram.png)
+![Individual block diagram for the humidity sensing subsystem](Sidrablockdiagram.png)
 
 [Download the draw.io source file](sidra_block_diagram.drawio)
