@@ -82,7 +82,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 ---
 
-## 2. Signal Buffer (Op Amp) — **Humidity Sensing Subsystem**
+## 2. Signal Amplifier (Op Amp) — **Humidity Sensing Subsystem**
 
 1. Microchip MCP6001T-I/OT single rail-to-rail op amp (SOT-23-5)
 
