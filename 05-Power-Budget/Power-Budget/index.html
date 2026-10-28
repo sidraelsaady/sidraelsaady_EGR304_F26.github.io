@@ -704,9 +704,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resouces" class="md-nav__link">
+  <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Resouces
+      Resources
     </span>
   </a>
   
@@ -827,9 +827,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resouces" class="md-nav__link">
+  <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Resouces
+      Resources
     </span>
   </a>
   
@@ -861,26 +861,28 @@
   <h1>Power Budget</h1>
 
 <h2 id="overview">Overview</h2>
-<p>Write a overview of what you did and why you did a Power Budget.</p>
-<blockquote>
-<p>Capture your power budge as a image to display. Take time to get clean breaks and a well organized layout.</p>
-</blockquote>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budgetPg1.png" data-desc-position="bottom"><img alt="budget1" height:_300_="height:&quot;300;&quot;" src="../budgetPg1.png" style="style" width:_350_="width:&quot;350&quot;"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="budgetPg2.png" data-desc-position="bottom"><img alt="budget2" height:_300_="height:&quot;300;&quot;" src="budgetPg2.png" style="style" width:_350_="width:&quot;350&quot;"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budgetPg3.png" data-desc-position="bottom"><img alt="budget3" height:_300_="height:&quot;300;&quot;" src="../budgetPg3.png" style="style" width:_350_="width:&quot;350&quot;"></a></p>
+<p>A power budget adds up the worst-case current every part of my board can draw, so I can check that the regulator, the fuse, and the wall adapter are sized correctly and that nothing will overheat. I listed every part that draws current on the regulated <strong>+5 V rail</strong>: the Curiosity Nano, the SHT31-ARP-B humidity sensor, the MCP6001 op amp and its gain resistors, the three indicator LEDs, the UART level-shift divider, and the button and reset pull-ups. Each value is the <strong>maximum</strong> current from the part's datasheet, or a worst-case calculation for resistors and LEDs. I then added a <strong>25 % safety margin</strong> and carried the result back to the <strong>+9 V input rail</strong>, where the L7805CV's own quiescent current is added.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budget1.png" data-desc-position="bottom"><img alt="Power budget, page 1: summary and major components" src="../budget1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../budget2.png" data-desc-position="bottom"><img alt="Power budget, page 2: +5 V rail" src="../budget2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="budget3.png" data-desc-position="bottom"><img alt="Power budget, page 3: +9 V input rail and design checks" src="budget3.png"></a></p>
 <h2 id="conclusions">Conclusions</h2>
-<p>From the prepare Power Budget, .....</p>
-<h2 id="resouces">Resouces</h2>
-<p>The power budget as a PDF download is available <a href="../PowerBudgetExample.pdf"><em>here</em></a>, and a Microsoft Excel Sheet <a href="../PowerBudgetExample.xlsx"><em>here</em></a>.</p>
+<p>From the prepared power budget:</p>
+<ul>
+<li><strong>+5 V rail:</strong> the board draws at most <strong>39.8 mA</strong>, or <strong>49.7 mA with a 25 % margin</strong>. The L7805CV can supply 1.5 A, leaving about <strong>1.45 A unused</strong>, so the regulator is far from its limit. The three LEDs are the largest load (about 29 mA together), more than the microcontroller itself.</li>
+<li><strong>+9 V input:</strong> including the L7805's 8 mA quiescent current, the board needs at most <strong>59.7 mA</strong> from the wall adapter. The CUI SWI12-9-N-P5 is rated for 1.2 A, so it has plenty of headroom, and the board stays well under the team's 1.5 A input limit (PR 6.1).</li>
+<li><strong>Fuse:</strong> the 500 mA fuse is about <strong>8× the worst-case input current</strong>. It will not blow during normal operation, and it will still open on a short circuit.</li>
+<li><strong>Regulator heat:</strong> the L7805 dissipates about <strong>0.27 W</strong>. With the TO-220's 50 °C/W junction-to-ambient rating, that is only about a <strong>14 °C rise</strong>, so <strong>no heatsink is needed</strong>. Its minimum load of 5 mA is always met.</li>
+<li><strong>Total board power</strong> is about <strong>0.54 W</strong> from the 9 V supply.</li>
+<li><strong>UART level:</strong> Team 202 uses 3.3 V UART, so the R4/R5 divider that shifts the PIC's 5 V TX down to about 3.2 V is included (about 1 mA while TX is high).</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<p>The power budget is available as a <a href="SE_Power_Budget.pdf">PDF download</a> and as a <a href="SE_Power_Budget.xlsx">Microsoft Excel sheet</a>.</p>
 
 
 
 
 
 
-
-  
-  
 
 
 
