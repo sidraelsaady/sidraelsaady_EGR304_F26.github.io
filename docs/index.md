@@ -1,3 +1,18 @@
+---
+title: Home
+---
+
+<div style="text-align: center;" markdown>
+
+<h2>Sidra Elsaady Datasheet</h2>
+<p>as part of</p>
+<h1>Environmental Monitoring Device</h1>
+<p>for</p>
+<h3>Team 202</h3>
+<p><b>Submission: </b></p>
+
+</div>
+
 ## Introduction
 
 This datasheet documents the **Humidity Sensing Subsystem** I designed for Team 202's
