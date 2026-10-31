@@ -22,7 +22,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 | Update rate | New reading at least every 2 s | PR 2.4 |
 | Signal path | Real-world signal → conditioning (amplify/filter) → ADC | Project brief |
 | Input current limit | ≤ 1.5 A | PR 6.1 |
-| Assembly | Hand-solderable by the team; avoid QFN and smaller where possible | Assignment guidance / PR 5.1 |
+| Assembly | Hand-solderable by the team | Assignment guidance / PR 5.1 |
 | Availability | In stock at an authorized distributor at time of order | PR 5.2 |
 
 *Prices are qty-1 prices from authorized distributors as of October 2026 and should be rechecked when ordering.*
@@ -41,11 +41,11 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
     | Pros | Cons |
     |---|---|
     | ±2 %RH typical accuracy, which beats our ±3 %RH requirement (PR 2.1) | 2.5 × 2.5 mm DFN-8 package with no leads, so hand soldering needs extended pads, flux and a fine-tip iron (hot air is easier if available) |
-    | Factory calibrated, so no humidity chamber is needed to calibrate it | Output can source/sink only ±100 µA, so it needs a high-impedance buffer before the filter and ADC |
+    | Factory calibrated, so no humidity chamber is needed to calibrate it | Output can source/sink only ±100 µA, so it needs a high impedance op amp stage before the filter and ADC |
     | Ratiometric analog output (10–90 % of VDD) shares the same 5 V reference as the PIC ADC, so supply drift cancels out | Sensitive to heat from nearby parts, so it must be placed away from the L7805 regulator |
     | Runs on 2.4–5.5 V, so it works directly from our 5 V rail |  |
     | Low supply current (350 µA max) |  |
-    | Analog output gives our subsystem a real signal-conditioning path (buffer + filter + ADC), as the project brief requires |  |
+    | Analog output gives our subsystem a real signal-conditioning path (amplifier + filter + ADC)), as the project brief requires |  |
     | In stock at multiple authorized distributors |  |
 
 1. Honeywell HIH-4000-001 analog humidity sensor
@@ -78,7 +78,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 **Choice:** Option 1: Sensirion SHT31-ARP-B
 
-**Rationale:** The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.
+**Rationale:** The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its small DFN package (0.5 mm pitch with a center pad). Because our boards are fabricated by JLCPCB, this pitch is well within their standard capabilities, and the solder mask reduces the chance of solder bridges. 
 
 ---
 
@@ -127,7 +127,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 **Choice:** Option 1: Microchip MCP6001T-I/OT
 
-**Rationale:** The buffer must pass the sensor's full 0.5–4.5 V output on a single 5 V supply without loading the sensor. The MCP6001's rail-to-rail input and output does this, and its 170 µA max draw barely affects the power budget. The LM358 was rejected because its output saturates around 3.5 V, which would cut off the top quarter of the humidity range. The MCP6002 is electrically equivalent and easier to solder. It stays as a drop-in backup if a second-order active filter is needed later, but for a single unity-gain buffer the smaller single-amplifier MCP6001 saves board area near the sensor.
+**Rationale:** The amplifier has to pass the sensor's full 0.5–4.5 V output on a single 5 V supply without loading the sensor, which can only drive ±100 µA and 5 nF. The MCP6001's rail-to-rail input and output handles this, and its 170 µA max draw barely affects the power budget. I set it up as a non inverting amplifier with a gain of 1.1 (1 + R11/R12 = 1 + 1 kΩ/10 kΩ), which stretches the signal to 0.55-4.95 V so it uses more of the ADC's 0-5 V range without clipping at the rails. The LM358 was rejected because its output tops out around 3.5 V, which would cut off the top quarter of the humidity range. The MCP6002 works the same way and is easier to solder, so it stays as a backup if I ever need a second-order active filter, but for a single gain stage the smaller MCP6001 saves board space near the sensor.
 
 ---
 
@@ -135,7 +135,7 @@ The Microchip PIC18F57Q43 Curiosity Nano was selected for us, so it does not get
 
 The filter block is built from passives, which the assignment excludes. It is included here briefly because it is a block on my diagram.
 
-1. Passive first-order RC filter (f<sub>c</sub> = 16 Hz)
+1. Passive first-order RC filter (R3 = 10 kΩ, C6 = 1 µF, fc = 15.9 Hz)
 
     * = $0.10 in parts
 
@@ -178,8 +178,8 @@ The filter block is built from passives, which the assignment excludes. It is in
 
     | Pros | Cons |
     |---|---|
-    | 1.5 A output is far above our 31.9 mA budget (with 25% margin) | Needs about 2 V of headroom (dropout), so input must stay above 7 V |
-    | Built-in short-circuit current limiting and thermal shutdown support PR 6.1 and PR 6.2 | Wastes (9 − 5) V × I as heat (about 0.13 W at our budget, so no heatsink is needed) |
+    | 1.5 A output is far above our 49.7 mA budget (with 25% margin) | Needs about 2 V of headroom (dropout), so input must stay above 7 V |
+    | Built-in short-circuit current limiting and thermal shutdown support PR 6.1 and PR 6.2 | Wastes (9 − 5) V × I as heat (about 0.27 W at our budget, so no heatsink is needed) |
     | Through-hole TO-220 is easy to solder and can take a heatsink | Quiescent current up to 8 mA |
     | Same regulator as the rest of Team 202, so spare parts and layouts are shared |  |
 
@@ -211,7 +211,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 **Choice:** Option 1: STMicroelectronics L7805CV
 
-**Rationale:** With a fixed 9 V input there is 4 V of headroom, so the L7805's 2 V dropout is not a limitation and the extra cost of an LDO buys nothing. Its built-in current limit and thermal shutdown directly support our safety requirements, and at our 31.9 mA budget it dissipates only about 0.13 W, so it needs no heatsink. Using the same regulator as the rest of the team also simplifies layout reviews and spare parts.
+**Rationale:** With a fixed 9 V input there is 4 V of headroom, so the L7805's 2 V dropout is not a limitation and the extra cost of an LDO buys nothing. Its built-in current limit and thermal shutdown directly support our safety requirements, and at our 49.7 mA budget it dissipates only about 0.27 W (about a 14 °C rise), so it needs no heatsink. Using the same regulator as the rest of the team also simplifies layout reviews and spare parts.
 
 ---
 
@@ -240,7 +240,7 @@ The filter block is built from passives, which the assignment excludes. It is in
 
     | Pros | Cons |
     |---|---|
-    | Still about 16 times the 39.9 mA my board needs | Less margin if the team ever powers more than one board from one adapter |
+    | Still about 11 times the 59.7 mA my board needs | Less margin if the team ever powers more than one board from one adapter |
     | Smaller and slightly less expensive than the 12 W version | Requires an outlet |
     | Same plug and polarity |  |
 
@@ -258,24 +258,28 @@ The filter block is built from passives, which the assignment excludes. It is in
 
 **Choice:** Option 1: CUI Devices SWI12-9-N-P5 9 V 1.2 A wall adapter
 
-**Rationale:** The course requires a 9 V supply through a barrel jack, and a regulated wall adapter keeps the L7805 input steady for accurate ratiometric readings. The 1.2 A rating leaves a large margin over my 39.9 mA draw and stays below the team's 1.5 A input limit (PR 6.1). A battery pack would drop below the L7805's dropout limit partway through discharge, which would cause the 5 V rail and the humidity reading to drift.
+**Rationale:** The course requires a 9 V supply through a barrel jack, and a regulated wall adapter keeps the L7805 input steady for accurate ratiometric readings. The 1.2 A rating leaves a large margin over my 59.7 mA draw and stays below the team's 1.5 A input limit (PR 6.1). A battery pack would drop below the L7805's dropout limit partway through discharge, which would cause the 5 V rail and the humidity reading to drift.
 
 ---
 
 
 
 ## Pin Table — PIC18F57Q43 Curiosity Nano
-
 | PIC Pin | Function | Connected To | Direction | Signal |
 |---|---|---|---|---|
-| RA0 | ANA0 (ADCC input) | Op amp buffer → RC filter output | Input | Analog, 0.5–4.5 V |
-| RC2 | U1TX (UART1 transmit) | Connector 1, pin 1 → hub board | Output | Digital serial, 0–5 V |
-| RC3 | U1RX (UART1 receive) | Connector 1, pin 2 ← hub board | Input | Digital serial, 0–5 V |
+| RA0 | ANA0 (ADCC input) | Op amp (non-inverting, G = 1.1) → RC filter output | Input | Analog, 0.55–4.95 V |
+| RA1 | ANA1 (ADCC input) | SHT31-ARP-B T (temperature) output | Input | Analog, 0.5–4.5 V |
+| RC2 | U1TX (UART1 transmit) | R4/R5 divider → Connector 1, pin 2 → hub board | Output | Digital serial, 0–3.3 V on ribbon |
+| RC3 | U1RX (UART1 receive), TTL input level | Connector 1, pin 1 → R6 1 kΩ ← hub board | Input | Digital serial, 0–3.3 V |
+| RD0 | Digital output | Heartbeat LED (yellow) via 330 Ω | Output | Digital, 0–5 V |
+| RD1 | Digital output | Debug LED (red) via 330 Ω | Output | Digital, 0–5 V |
+| RB0 | Digital input | Pushbutton SW1 (10 kΩ pull-up, RC debounce) | Input | Digital, 0–5 V |
+| RC4–RC7, RE0, RE1, RF4, RF5 | Spare GPIO | J4 1×8 header | — | Digital, 0–5 V |
 | GND | Ground | Connector 1, pin 8 | — | Ground |
-| VTG | 5 V supply | L7805CV output | Power in | 5 V |
-| VOFF | Disable on-board regulator | GND | — | Must be tied to GND when VTG is powered externally |
+| VTG | 5 V supply | L7805CV output (via JP9) | Power in | 5 V |
+| VOFF | Disable on-board regulator | GND | — | Tied to GND when VTG is powered externally |
 
-Connector 1 pins 3–7 are not connected.
+Connector 1 pins 3–7 are not connected. Unused PIC pins are set as outputs driven low in firmware.
 
 ---
 
