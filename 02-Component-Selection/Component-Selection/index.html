@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>Assembly</td>
-<td>Hand-solderable by the team; avoid QFN and smaller where possible</td>
+<td>Hand-solderable by the team</td>
 <td>Assignment guidance / PR 5.1</td>
 </tr>
 <tr>
@@ -1023,7 +1023,7 @@
 </tr>
 <tr>
 <td>Factory calibrated, so no humidity chamber is needed to calibrate it</td>
-<td>Output can source/sink only ±100 µA, so it needs a high-impedance buffer before the filter and ADC</td>
+<td>Output can source/sink only ±100 µA, so it needs a high impedance op amp stage before the filter and ADC</td>
 </tr>
 <tr>
 <td>Ratiometric analog output (10–90 % of VDD) shares the same 5 V reference as the PIC ADC, so supply drift cancels out</td>
@@ -1038,7 +1038,7 @@
 <td></td>
 </tr>
 <tr>
-<td>Analog output gives our subsystem a real signal-conditioning path (buffer + filter + ADC), as the project brief requires</td>
+<td>Analog output gives our subsystem a real signal-conditioning path (amplifier + filter + ADC)), as the project brief requires</td>
 <td></td>
 </tr>
 <tr>
@@ -1118,7 +1118,7 @@
 </li>
 </ol>
 <p><strong>Choice:</strong> Option 1: Sensirion SHT31-ARP-B</p>
-<p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its DFN package. We will reduce that risk by extending the footprint's pads about 0.75 mm past the package so they can be soldered with a fine-tip iron and flux, and by adding a via under the center pad so it can be soldered from the back of the board. The center pad is only needed for mechanical strength (it is internally tied to VSS, per datasheet §3.4). If the lab's hot-air station or reflow oven is available we will use it instead, and we will order spares at $5 each.</p>
+<p><strong>Rationale:</strong> The SHT31-ARP-B is the only option that meets the ±3 %RH accuracy requirement out of the box, because it is factory calibrated at ±2 %RH. Its ratiometric output scales with the same 5 V rail that the PIC ADC uses as a reference, so small regulator variations don't show up as humidity errors. The analog output also fits the course requirement to condition a real-world signal before digitizing it. The HIH-4000 is easier to solder, but it misses the accuracy spec and costs about 48 times as much on Digi-Key with very limited availability. The HS1101LF would need a calibration process we can't verify against PR 2.1. The main risk with the SHT31 is its small DFN package (0.5 mm pitch with a center pad). Because our boards are fabricated by JLCPCB, this pitch is well within their standard capabilities, and the solder mask reduces the chance of solder bridges. </p>
 <hr>
 <h2 id="2-signal-amplifier-op-amp-humidity-sensing-subsystem">2. Signal Amplifier (Op Amp) — <strong>Humidity Sensing Subsystem</strong></h2>
 <ol>
@@ -1222,13 +1222,13 @@
 </li>
 </ol>
 <p><strong>Choice:</strong> Option 1: Microchip MCP6001T-I/OT</p>
-<p><strong>Rationale:</strong> The buffer must pass the sensor's full 0.5–4.5 V output on a single 5 V supply without loading the sensor. The MCP6001's rail-to-rail input and output does this, and its 170 µA max draw barely affects the power budget. The LM358 was rejected because its output saturates around 3.5 V, which would cut off the top quarter of the humidity range. The MCP6002 is electrically equivalent and easier to solder. It stays as a drop-in backup if a second-order active filter is needed later, but for a single unity-gain buffer the smaller single-amplifier MCP6001 saves board area near the sensor.</p>
+<p><strong>Rationale:</strong> The amplifier has to pass the sensor's full 0.5–4.5 V output on a single 5 V supply without loading the sensor, which can only drive ±100 µA and 5 nF. The MCP6001's rail-to-rail input and output handles this, and its 170 µA max draw barely affects the power budget. I set it up as a non inverting amplifier with a gain of 1.1 (1 + R11/R12 = 1 + 1 kΩ/10 kΩ), which stretches the signal to 0.55-4.95 V so it uses more of the ADC's 0-5 V range without clipping at the rails. The LM358 was rejected because its output tops out around 3.5 V, which would cut off the top quarter of the humidity range. The MCP6002 works the same way and is easier to solder, so it stays as a backup if I ever need a second-order active filter, but for a single gain stage the smaller MCP6001 saves board space near the sensor.</p>
 <hr>
 <h2 id="3-low-pass-filter-humidity-sensing-subsystem">3. Low-Pass Filter — <strong>Humidity Sensing Subsystem</strong></h2>
 <p>The filter block is built from passives, which the assignment excludes. It is included here briefly because it is a block on my diagram.</p>
 <ol>
 <li>
-<p>Passive first-order RC filter (f<sub>c</sub> = 16 Hz)</p>
+<p>Passive first-order RC filter (R3 = 10 kΩ, C6 = 1 µF, fc = 15.9 Hz)</p>
 <ul>
 <li>= $0.10 in parts</li>
 </ul>
@@ -1322,12 +1322,12 @@
 </thead>
 <tbody>
 <tr>
-<td>1.5 A output is far above our 31.9 mA budget (with 25% margin)</td>
+<td>1.5 A output is far above our 49.7 mA budget (with 25% margin)</td>
 <td>Needs about 2 V of headroom (dropout), so input must stay above 7 V</td>
 </tr>
 <tr>
 <td>Built-in short-circuit current limiting and thermal shutdown support PR 6.1 and PR 6.2</td>
-<td>Wastes (9 − 5) V × I as heat (about 0.13 W at our budget, so no heatsink is needed)</td>
+<td>Wastes (9 − 5) V × I as heat (about 0.27 W at our budget, so no heatsink is needed)</td>
 </tr>
 <tr>
 <td>Through-hole TO-220 is easy to solder and can take a heatsink</td>
@@ -1402,7 +1402,7 @@
 </li>
 </ol>
 <p><strong>Choice:</strong> Option 1: STMicroelectronics L7805CV</p>
-<p><strong>Rationale:</strong> With a fixed 9 V input there is 4 V of headroom, so the L7805's 2 V dropout is not a limitation and the extra cost of an LDO buys nothing. Its built-in current limit and thermal shutdown directly support our safety requirements, and at our 31.9 mA budget it dissipates only about 0.13 W, so it needs no heatsink. Using the same regulator as the rest of the team also simplifies layout reviews and spare parts.</p>
+<p><strong>Rationale:</strong> With a fixed 9 V input there is 4 V of headroom, so the L7805's 2 V dropout is not a limitation and the extra cost of an LDO buys nothing. Its built-in current limit and thermal shutdown directly support our safety requirements, and at our 49.7 mA budget it dissipates only about 0.27 W (about a 14 °C rise), so it needs no heatsink. Using the same regulator as the rest of the team also simplifies layout reviews and spare parts.</p>
 <hr>
 <h2 id="5-power-source-humidity-sensing-subsystem-power">5. Power Source — <strong>Humidity Sensing Subsystem power</strong></h2>
 <ol>
@@ -1456,7 +1456,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Still about 16 times the 39.9 mA my board needs</td>
+<td>Still about 11 times the 59.7 mA my board needs</td>
 <td>Less margin if the team ever powers more than one board from one adapter</td>
 </tr>
 <tr>
@@ -1498,7 +1498,7 @@
 </li>
 </ol>
 <p><strong>Choice:</strong> Option 1: CUI Devices SWI12-9-N-P5 9 V 1.2 A wall adapter</p>
-<p><strong>Rationale:</strong> The course requires a 9 V supply through a barrel jack, and a regulated wall adapter keeps the L7805 input steady for accurate ratiometric readings. The 1.2 A rating leaves a large margin over my 39.9 mA draw and stays below the team's 1.5 A input limit (PR 6.1). A battery pack would drop below the L7805's dropout limit partway through discharge, which would cause the 5 V rail and the humidity reading to drift.</p>
+<p><strong>Rationale:</strong> The course requires a 9 V supply through a barrel jack, and a regulated wall adapter keeps the L7805 input steady for accurate ratiometric readings. The 1.2 A rating leaves a large margin over my 59.7 mA draw and stays below the team's 1.5 A input limit (PR 6.1). A battery pack would drop below the L7805's dropout limit partway through discharge, which would cause the 5 V rail and the humidity reading to drift.</p>
 <hr>
 <h2 id="pin-table-pic18f57q43-curiosity-nano">Pin Table — PIC18F57Q43 Curiosity Nano</h2>
 <table>
@@ -1515,23 +1515,58 @@
 <tr>
 <td>RA0</td>
 <td>ANA0 (ADCC input)</td>
-<td>Op amp buffer → RC filter output</td>
+<td>Op amp (non-inverting, G = 1.1) → RC filter output</td>
+<td>Input</td>
+<td>Analog, 0.55–4.95 V</td>
+</tr>
+<tr>
+<td>RA1</td>
+<td>ANA1 (ADCC input)</td>
+<td>SHT31-ARP-B T (temperature) output</td>
 <td>Input</td>
 <td>Analog, 0.5–4.5 V</td>
 </tr>
 <tr>
 <td>RC2</td>
 <td>U1TX (UART1 transmit)</td>
-<td>Connector 1, pin 1 → hub board</td>
+<td>R4/R5 divider → Connector 1, pin 2 → hub board</td>
 <td>Output</td>
-<td>Digital serial, 0–5 V</td>
+<td>Digital serial, 0–3.3 V on ribbon</td>
 </tr>
 <tr>
 <td>RC3</td>
-<td>U1RX (UART1 receive)</td>
-<td>Connector 1, pin 2 ← hub board</td>
+<td>U1RX (UART1 receive), TTL input level</td>
+<td>Connector 1, pin 1 → R6 1 kΩ ← hub board</td>
 <td>Input</td>
-<td>Digital serial, 0–5 V</td>
+<td>Digital serial, 0–3.3 V</td>
+</tr>
+<tr>
+<td>RD0</td>
+<td>Digital output</td>
+<td>Heartbeat LED (yellow) via 330 Ω</td>
+<td>Output</td>
+<td>Digital, 0–5 V</td>
+</tr>
+<tr>
+<td>RD1</td>
+<td>Digital output</td>
+<td>Debug LED (red) via 330 Ω</td>
+<td>Output</td>
+<td>Digital, 0–5 V</td>
+</tr>
+<tr>
+<td>RB0</td>
+<td>Digital input</td>
+<td>Pushbutton SW1 (10 kΩ pull-up, RC debounce)</td>
+<td>Input</td>
+<td>Digital, 0–5 V</td>
+</tr>
+<tr>
+<td>RC4–RC7, RE0, RE1, RF4, RF5</td>
+<td>Spare GPIO</td>
+<td>J4 1×8 header</td>
+<td>—</td>
+<td>Digital, 0–5 V</td>
 </tr>
 <tr>
 <td>GND</td>
@@ -1543,7 +1578,7 @@
 <tr>
 <td>VTG</td>
 <td>5 V supply</td>
-<td>L7805CV output</td>
+<td>L7805CV output (via JP9)</td>
 <td>Power in</td>
 <td>5 V</td>
 </tr>
@@ -1552,11 +1587,11 @@
 <td>Disable on-board regulator</td>
 <td>GND</td>
 <td>—</td>
-<td>Must be tied to GND when VTG is powered externally</td>
+<td>Tied to GND when VTG is powered externally</td>
 </tr>
 </tbody>
 </table>
-<p>Connector 1 pins 3–7 are not connected.</p>
+<p>Connector 1 pins 3–7 are not connected. Unused PIC pins are set as outputs driven low in firmware.</p>
 <hr>
 
 
