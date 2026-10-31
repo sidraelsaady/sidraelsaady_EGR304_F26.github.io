@@ -21,4 +21,4 @@ From the prepared power budget:
 
 ## Resources
 
-The power budget is available as a [PDF download](SE_Power_Budget.numbers) and an [Excel File] (SE_Power_Budgetfinal.xlsx)
+The power budget is available as a [PDF download](SE_Power_Budget.numbers) and an [Microsoft Excel sheet](SE_Power_Budgetfinal.xlsx)
