@@ -65,7 +65,7 @@ All parts are ordered from Digi-Key on one purchase request.
 | Parts used to build one board | $22.06 |
 | Full Digi-Key order with spares and breadboard parts | $52.51 |
 
-Prices are qty-1 Digi-Key prices checked on October 30, 2026.
+ Digi-Key prices checked on October 30, 2026.
 
 ## Datasheets
 
