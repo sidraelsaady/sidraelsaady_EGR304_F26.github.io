@@ -79,5 +79,5 @@ Prices are qty-1 Digi-Key prices checked on October 30, 2026.
 
 ## Downloads
 
-- [BOM spreadsheet (Excel)](SE_Humidity_BOM.xlsx)
+- [BOM spreadsheet (Excel)](ELSAADY_FINAL_BOM304.xlsx)
 - [Digi-Key purchase request (Excel)](EGR304_Purchase_Request_DigiKey_Elsaady.xlsx)
