@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#bill-of-materials" class="md-skip">
           Skip to content
         </a>
       
@@ -558,6 +558,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -586,6 +588,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -594,27 +598,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#how-i-chose-the-quantities" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      How I chose the quantities
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bill-of-materials-example-as-table" class="md-nav__link">
+  <a href="#debugging-and-expandability-hardware" class="md-nav__link">
     <span class="md-ellipsis">
-      Bill of Materials Example (as Table)
+      Debugging and expandability hardware
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bill-of-materials-example-as-image" class="md-nav__link">
+  <a href="#parts-list" class="md-nav__link">
     <span class="md-ellipsis">
-      Bill of Materials Example (as Image)
+      Parts list
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasheets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloads
     </span>
   </a>
   
@@ -801,6 +832,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -809,27 +842,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#how-i-chose-the-quantities" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      How I chose the quantities
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bill-of-materials-example-as-table" class="md-nav__link">
+  <a href="#debugging-and-expandability-hardware" class="md-nav__link">
     <span class="md-ellipsis">
-      Bill of Materials Example (as Table)
+      Debugging and expandability hardware
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bill-of-materials-example-as-image" class="md-nav__link">
+  <a href="#parts-list" class="md-nav__link">
     <span class="md-ellipsis">
-      Bill of Materials Example (as Image)
+      Parts list
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasheets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloads
     </span>
   </a>
   
@@ -858,59 +918,396 @@
   
 
 
-  <h1>Bill of Materials</h1>
-
-<h2 id="overview">Overview</h2>
-<p>written context</p>
-<h2 id="bill-of-materials-example-as-table">Bill of Materials Example (as Table)</h2>
-<p><em>Table ##: An example of one approach to adding your BOM table to this section.</em></p>
+<h1 id="bill-of-materials">Bill of Materials</h1>
+<p>This is the full parts list for my humidity sensing subsystem. It covers every part on my schematic, plus the extras I need for breadboard testing, debugging and spares.</p>
+<h2 id="how-i-chose-the-quantities">How I chose the quantities</h2>
+<ul>
+<li><strong>1 for the PCB</strong>, matching the reference designators on the schematic.</li>
+<li><strong>1 breadboard version</strong> where one exists. The MCP6001 only comes in tiny surface-mount packages, so I'm ordering the MCP6002 in a DIP-8 package to test the amplifier on a breadboard first. The L7805, pushbutton and pin headers are already through-hole, so they work on both.</li>
+<li><strong>1 to 2 spares</strong> of each part in case something gets damaged during soldering. I ordered 2 spare SHT31 sensors because the DFN package is the easiest part to ruin.</li>
+</ul>
+<h2 id="debugging-and-expandability-hardware">Debugging and expandability hardware</h2>
+<ul>
+<li><strong>Test points TP1-TP10</strong> (Keystone 5000 red, 5001 black for GND) on the power rails, sensor output, amplifier output, ADC input and both UART lines, so a meter or scope probe can clip on.</li>
+<li><strong>Jumpers JP1, JP2, JP3 and JP9</strong> with removable shunts, so I can disconnect the sensor supply, either UART line or the Nano's VTG and test each section on its own.</li>
+<li><strong>J4 spare GPIO header</strong> with 8 unused PIC pins for expansion.</li>
+<li><strong>Socketed Curiosity Nano</strong> on female headers, so it can be removed or swapped without desoldering.</li>
+<li><strong>Replaceable fuse</strong> held in PCB fuse clips.</li>
+<li><strong>Keyed 2x4 IDC header</strong> for the team ribbon cable, so the cable can't be plugged in backwards.</li>
+</ul>
+<h2 id="parts-list">Parts list</h2>
+<p>All parts are ordered from Digi-Key on one purchase request.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;"><strong>Part Name/Description</strong></th>
-<th style="text-align: left;"><strong>Qty</strong></th>
-<th style="text-align: left;"><strong>Unit Cost</strong></th>
-<th style="text-align: left;"><strong>Total Cost</strong></th>
-<th style="text-align: left;"><strong>Manufacture</strong></th>
-<th style="text-align: left;"><strong>Manufacturer #</strong></th>
-<th style="text-align: left;"><strong>Vendor Link</strong></th>
-<th style="text-align: left;"><strong>Datasheet Link</strong></th>
-<th style="text-align: left;"><strong>Schematic Reference Designators</strong></th>
+<th>Ref</th>
+<th>Description</th>
+<th>Manufacturer</th>
+<th>Part #</th>
+<th style="text-align: center;">Qty on PCB</th>
+<th style="text-align: center;">Qty ordered</th>
+<th style="text-align: right;">Unit price</th>
+<th style="text-align: right;">Line total</th>
+<th>Supplier</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">8-bit SIPO/SISO Shift Register, SOIC-16 package</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">$0.49</td>
-<td style="text-align: left;">$ 0.49</td>
-<td style="text-align: left;">NXP</td>
-<td style="text-align: left;">74HC595D,112</td>
-<td style="text-align: left;"><a href="https://www.digikey.com/en/products/detail/nexperia-usa-inc/74HC595D-112/763550">DigiKey</a></td>
-<td style="text-align: left;"><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT595.pdf">datasheet link</a></td>
-<td style="text-align: left;">U1</td>
+<td>U3</td>
+<td>Analog humidity/temperature sensor, ratiometric 0.5-4.5 V output, ±2 %RH, DFN-8</td>
+<td>Sensirion</td>
+<td><a href="https://www.digikey.com/en/products/detail/sensirion-ag/SHT31-ARP-B/5872251">SHT31-ARP-B</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$5.00</td>
+<td style="text-align: right;">$15.00</td>
+<td>Digi-Key</td>
 </tr>
 <tr>
-<td style="text-align: left;">0.1 µF Ceramic Capacitor, +/-10%, X7R, 50V, 0805 package</td>
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">0.2750</td>
-<td style="text-align: left;">$2.75</td>
-<td style="text-align: left;">KEMET</td>
-<td style="text-align: left;">C0805F104K5RACTU</td>
-<td style="text-align: left;">PRLTA 109</td>
-<td style="text-align: left;">n/a</td>
-<td style="text-align: left;">C2, C4, C6, C7, C8, C9, C10, C11, C12, C16</td>
+<td>U4</td>
+<td>Single rail-to-rail op amp, 1 MHz, SOT-23-5</td>
+<td>Microchip</td>
+<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/MCP6001T-I-OT/697158">MCP6001T-I/OT</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.30</td>
+<td style="text-align: right;">$0.90</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>U4 (breadboard)</td>
+<td>Dual rail-to-rail op amp, 1 MHz, PDIP-8 (breadboard version of U4)</td>
+<td>Microchip</td>
+<td><a href="https://www.digikey.com/en/products/detail/microchip-technology/MCP6002-I-P/500875">MCP6002-I/P</a></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">$0.45</td>
+<td style="text-align: right;">$0.90</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>U2</td>
+<td>5 V 1.5 A linear regulator, TO-220</td>
+<td>STMicroelectronics</td>
+<td><a href="https://www.digikey.com/en/products/detail/stmicroelectronics/L7805CV/585964">L7805CV</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$1.14</td>
+<td style="text-align: right;">$3.42</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>J1</td>
+<td>DC barrel jack, 2.0 mm pin, 5.5 mm OD, through-hole right angle</td>
+<td>Same Sky (CUI Devices)</td>
+<td><a href="https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/PJ-002A/96962">PJ-002A</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">$0.66</td>
+<td style="text-align: right;">$1.32</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>Fuse, 500 mA fast-acting, 250 V, 5 x 20 mm</td>
+<td>Littelfuse</td>
+<td><a href="https://www.digikey.com/en/products/detail/littelfuse-inc/0217-500HXP/777105">0217.500HXP</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">$0.60</td>
+<td style="text-align: right;">$2.40</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>Fuse clip, 111 series, 10 A 250 V, through-hole, for 5 x 20 mm fuses</td>
+<td>Littelfuse</td>
+<td><a href="https://www.digikey.com/en/products/detail/littelfuse-inc/01110501Z/2518598?s=N4IgTCBcDaIAwEYlwKyIFogLoF8g">01110501Z</a></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">$0.20</td>
+<td style="text-align: right;">$0.80</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>J2</td>
+<td>Four-wall shrouded header, 2x4 (8 pos), 2.54 mm, keyed, through-hole vertical</td>
+<td>3M</td>
+<td><a href="https://www.digikey.com/en/products/detail/3m/N2508-6002-RB/2609703">N2508-6002-RB</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">$2.31</td>
+<td style="text-align: right;">$4.62</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>J4, JP1, JP2, JP3, JP9</td>
+<td>Male pin header, 1x40, 2.54 mm, breakaway</td>
+<td>Sullins</td>
+<td><a href="https://www.digikey.com/en/products/detail/sullins-connector-solutions/PRPC040SAAN-RC/2775214">PRPC040SAAN-RC</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$1.23</td>
+<td style="text-align: right;">$3.69</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>U1 socket</td>
+<td>Female socket header, 1x14, 2.54 mm, through-hole straight</td>
+<td>Sullins</td>
+<td><a href="https://www.digikey.com/en/products/detail/sullins-connector-solutions/PPTC141LFBN-RC/810152?s=N4IgTCBcDaIMoFcA2SCWA7AzgAgAq4BUBhARgBYSAZAMQCEA5AWgCUiQBdAXyA">PPTC141LFBN-RC</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">$0.87</td>
+<td style="text-align: right;">$5.22</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>JP1, JP2, JP3, JP9</td>
+<td>Jumper shunt, 2 position, 2.54 mm</td>
+<td>Sullins</td>
+<td><a href="https://www.digikey.com/en/products/detail/sullins-connector-solutions/SPC02SYAN/76375">SPC02SYAN</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">$0.10</td>
+<td style="text-align: right;">$0.60</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>SW1</td>
+<td>Tactile pushbutton, 6 x 6 mm, SPST-NO, through-hole</td>
+<td>TE Connectivity</td>
+<td><a href="https://www.digikey.com/en/products/detail/te-connectivity-alcoswitch-switches/1825910-6/1632536">1825910-6</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.13</td>
+<td style="text-align: right;">$0.39</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>D1</td>
+<td>LED, green, 0805</td>
+<td>Lite-On</td>
+<td><a href="https://www.digikey.com/en/products/detail/liteon/LTST-C171GKT/386793">LTST-C171GKT</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.15</td>
+<td style="text-align: right;">$0.45</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>LED, yellow, 0805</td>
+<td>Lite-On</td>
+<td><a href="https://www.digikey.com/en/products/detail/liteon/LTST-C171YKT/386807">LTST-C171YKT</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.13</td>
+<td style="text-align: right;">$0.39</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>LED, red, 0805</td>
+<td>Lite-On</td>
+<td><a href="https://www.digikey.com/en/products/detail/liteon/LTST-C171KRKT/386801">LTST-C171KRKT</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.16</td>
+<td style="text-align: right;">$0.48</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R1, R7, R8</td>
+<td>Resistor, 330 Ω, 5 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-07330RL/728311?s=N4IgTCBcDaIEoGEAMAOJBWAUnAtEg7AMyFJwAyIAugL5A">RC0805JR-07330RL</a></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">$0.11</td>
+<td style="text-align: right;">$0.66</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R2, R3, R9</td>
+<td>Resistor, 10 kΩ, 5 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-0710KL/728241?s=N4IgTCBcDaIEoGEAMAOJBWAUnAtEg7AIxIDSAMiALoC%2BQA">RC0805JR-0710KL</a></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: right;">$0.10</td>
+<td style="text-align: right;">$0.60</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>Resistor, 1.8 kΩ, 5 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-071K8L/728236?s=N4IgTCBcDaIEoGEAMAOJBWAUnAtEg7AIwDSKAMiALoC%2BQA">RC0805JR-071K8L</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.10</td>
+<td style="text-align: right;">$0.30</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>Resistor, 3.3 kΩ, 5 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-073K3L/728299?s=N4IgTCBcDaIEoGEAMAOJBWAUnAtEg7AMwDShAMiALoC%2BQA">RC0805JR-073K3L</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.11</td>
+<td style="text-align: right;">$0.33</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R6, R10</td>
+<td>Resistor, 1 kΩ, 5 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-071KL/728218?s=N4IgTCBcDaIEoGEAMAOJBWAUnAtEg7AIwDSAMiALoC%2BQA">RC0805JR-071KL</a></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">$0.11</td>
+<td style="text-align: right;">$0.44</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R11</td>
+<td>Resistor, 1 kΩ, 1 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805FR-071KL/727444?s=N4IgTCBcDaIEoGEAMAOJBWAYnAtEg7AIwDSAMiALoC%2BQA">RC0805FR-071KL</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.10</td>
+<td style="text-align: right;">$0.30</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>R12</td>
+<td>Resistor, 10 kΩ, 1 %, 1/8 W, 0805</td>
+<td>Yageo</td>
+<td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805FR-0710KL/727535?s=N4IgTCBcDaIEoGEAMAOJBWAYnAtEg7AIxIDSAMiALoC%2BQA">RC0805FR-0710KL</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.10</td>
+<td style="text-align: right;">$0.30</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>Capacitor, 0.33 µF, 50 V, X7R, 0805</td>
+<td>Samsung Electro-Mechanics</td>
+<td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B334KBFNNNE/3886781?s=N4IgTCBcDaIMIBkwEYBCBmdAWA0qgYgHLECiIAugL5A">CL21B334KBFNNNE</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.11</td>
+<td style="text-align: right;">$0.33</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>C2, C3, C4, C5</td>
+<td>Capacitor, 0.1 µF, 50 V, X7R, 0805</td>
+<td>Samsung Electro-Mechanics</td>
+<td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B104KBCNNNC/3886661?s=N4IgTCBcDaIMIBkwEYBCyAMAWA0quAckXCALoC%2BQA">CL21B104KBCNNNC</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: right;">$0.10</td>
+<td style="text-align: right;">$0.80</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>C6, C7</td>
+<td>Capacitor, 1 µF, 50 V, X7R, 0805</td>
+<td>KYOCERA AVX</td>
+<td><a href="https://www.digikey.com/en/products/detail/kyocera-avx/08055C105KAT2A/3081236">08055C105KAT2A</a></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: right;">$0.78</td>
+<td style="text-align: right;">$3.90</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>TP2</td>
+<td>Test point, miniature, black, through-hole (Keystone 5001)</td>
+<td>Keystone Electronics</td>
+<td><a href="https://www.digikey.com/en/products/detail/keystone-electronics/5001/255327?s=N4IgTCBcDaINIFMCeBnALgewHYIAQFYAGQgRhAF0BfIA">5001</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;">$0.27</td>
+<td style="text-align: right;">$0.81</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>TP1,TP3-10</td>
+<td>Test point, miniature, red, through-hole (Keystone 5000)</td>
+<td>Keystone Electronics</td>
+<td><a href="https://www.digikey.com/en/products/detail/keystone-electronics/5000/255326?s=N4IgTCBcDaINIFMCeBnALgewHYIAQFYAGYkAXQF8g">5000</a></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: right;">$0.26</td>
+<td style="text-align: right;">$3.16</td>
+<td>Digi-Key</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>PIC18F57Q43 Curiosity Nano development board</td>
+<td>Microchip</td>
+<td>EV50E86A</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td>Class kit</td>
+</tr>
+<tr>
+<td>Off-board (J1)</td>
+<td>AC/DC wall adapter, 9 V 1.2 A, 5.5 x 2.1 mm plug</td>
+<td>CUI Devices</td>
+<td>SWI12-9-N-P5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td>Already owned</td>
 </tr>
 </tbody>
 </table>
-<p>Note: Setting it up as a table is nice because it is completely viewable without scaling issues. <ins>Downside</ins> is that you have to do the math.</p>
+<h2 id="cost-summary">Cost summary</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parts used to build one board</td>
+<td style="text-align: right;">$22.06</td>
+</tr>
+<tr>
+<td>Full Digi-Key order with spares and breadboard parts</td>
+<td style="text-align: right;">$52.51</td>
+</tr>
+</tbody>
+</table>
+<p>Prices are qty-1 Digi-Key prices checked on October 30, 2026.</p>
+<h2 id="datasheets">Datasheets</h2>
 <ul>
-<li>You could also import your BOM via a screenshot of the spreadsheet created BOM</li>
+<li><a href="../Datasheet_SHT3x_ARP.pdf">SHT3x-ARP humidity sensor</a></li>
+<li><a href="../MCP6001-1R-1U-2-4-1-MHz-Low-Power-Op-Amp-DS20001733L.pdf">MCP6001/MCP6002 op amp</a></li>
+<li><a href="../DS_l78.pdf">L78 voltage regulator</a></li>
+<li><a href="../PIC18F57Q43-Curiosity-Nano-HW-UserGuide-DS40002186B.pdf">PIC18F57Q43 Curiosity Nano user guide</a></li>
+<li><a href="../ts0770.pdf">3M 2500 series IDC header</a></li>
+<li><a href="../Female_Headers.100_DS.pdf">Sullins female headers</a></li>
+<li><a href="../Littelfuse-Fuse-Clip-111-Datasheet-pdf.pdf">Littelfuse 111 series fuse clip</a></li>
 </ul>
-<h2 id="bill-of-materials-example-as-image">Bill of Materials Example (as Image)</h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../BOM-Screenshot.png" data-desc-position="bottom"><img _2000_="&quot;2000&quot;" alt="" src="../BOM-Screenshot.png" style="style" width:="width:"></a>
-<strong>Figure 2:</strong> Example Bill of Materials as a screenshot.</p>
-<p>As you can see, the text can be difficult to read without opening the image.</p>
+<h2 id="downloads">Downloads</h2>
+<ul>
+<li><a href="../SE_Humidity_BOM.xlsx">BOM spreadsheet (Excel)</a></li>
+<li><a href="../EGR304_Purchase_Request_DigiKey_Elsaady.xlsx">Digi-Key purchase request (Excel)</a></li>
+</ul>
 
 
 
