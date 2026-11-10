@@ -12,11 +12,11 @@ title: PCB Design
 
 ### Front
 
-![Front layout showing component placement, top copper, silkscreen, and the board outline](Revision-L-PCB-Front.png)
+![Front layout showing component placement, top copper, silkscreen, and the board outline](sidrapcbfront.png)
 
 ### Back
 
-![Back layout showing bottom copper, silkscreen, and the board outline as viewed from the back](Revision-L-PCB-Back.png)
+![Back layout showing bottom copper, silkscreen, and the board outline as viewed from the back](sidrapcbback.png)
 
 ## Downloads
 
