@@ -4,7 +4,7 @@
 
 
 - [Schematic PDF](KiCAD304_Humidity_SE.pdf)
-- [Kicad project ZIP (includes custom symbol and footprint libraries)](KiCAD304_Humidity_SE.zip)
+- [Kicad project ZIP (includes custom symbol and footprint libraries)](SidraElsaady2.zip)
 # Schematics
 
 
