@@ -993,10 +993,9 @@
   <h1>PCB Design</h1>
 
 <h2 id="overview">Overview</h2>
-<p><strong>Zander Boward | Team 202 Weather Gadget | Revision L.1</strong></p>
-<p>The LCD display subsystem uses a 95 × 90 mm, two-layer PCB. A PIC18F57Q43 Curiosity Nano connects to the pressure, light, and humidity sensor boards over UART. The PCB carries the display control and power circuitry, and the LCD connects through a removable harness at J6 and J7. A pushbutton selects which sensor reading to display.</p>
-<p>The board uses ground pours on both copper layers and 40 mil power traces. Four unplated mounting holes secure the board, and 30 labeled test points provide access for bring-up and debugging. See the <a href="../../04-Schematic/schematic/">schematic</a> for the circuit and connector pin assignments.</p>
+<p><strong>Sidra Elsaady| Team 202 Weather Gadget | Revision L.1</strong></p>
 <h2 id="pcb-layout">PCB layout</h2>
+<p>(SidraElsaady202_PCB_Layout.pdf)</p>
 <h3 id="front">Front</h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Revision-L-PCB-Front.png" data-desc-position="bottom"><img alt="Front layout showing component placement, top copper, silkscreen, and the board outline" src="../Revision-L-PCB-Front.png"></a></p>
 <h3 id="back">Back</h3>
@@ -1011,25 +1010,24 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Revision-L-PCB-Views.pdf">PCB layout PDF</a></td>
+<td><a href="">PCB layout PDF</a></td>
 <td>Front and back views in one document</td>
 </tr>
 <tr>
-<td><a href="Boward-Revision-L.1-KiCad.zip">Editable KiCad project ZIP</a></td>
+<td><a href="../SidraElsaady2.zip">Editable KiCad project ZIP</a></td>
 <td>Schematic, PCB, project settings, and custom libraries. Extract and open <code>Revision-L.kicad_pro</code> in KiCad 10.</td>
 </tr>
 <tr>
-<td><a href="../ZanderBoward202.zip">Gerber and drill ZIP</a></td>
+<td><a href="">Gerber and drill ZIP</a></td>
 <td>Fabrication files for both copper layers, solder mask, silkscreen, and board outline, with separate plated and unplated drill files</td>
 </tr>
 <tr>
-<td><a href="../Revision-L-DRC-Screenshot.pdf">KiCad DRC confirmation</a></td>
+<td>[KiCad DRC confirmation])</td>
 <td>The full PCB and Design Rules Checker results in one screenshot</td>
 </tr>
 </tbody>
 </table>
 <h2 id="verification">Verification</h2>
-<p>KiCad reported zero design rule errors and zero unconnected items. The four courtyard warnings refer to the unplated mounting holes H1–H4. A separate schematic parity check found zero mismatches. The Gerber archive above is the same one checked in JLCDFM.</p>
 
 
 
