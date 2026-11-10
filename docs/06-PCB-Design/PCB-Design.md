@@ -8,7 +8,6 @@ title: PCB Design
 
 
 ## PCB layout
-(SidraElsaady202_PCB_Layout.pdf)
 
 ### Front
 
