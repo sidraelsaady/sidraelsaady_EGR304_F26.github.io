@@ -39,7 +39,7 @@ The Nano gets its power from my 5 V rail through the VTG pin, with a 0.1 µF byp
 
 My board talks to Zander's hub board through a 2x4 IDC header using the class ribbon cable standard (PR 1.4). The hub sends on pin 1 and listens on pin 2, so my board receives on pin 1 (UART RX) and sends humidity readings on pin 2 (UART TX). Pin 8 is ground, and pins 3 through 7 aren't used.
 
-One thing I had to work around is that our team agreed on 3.3 V UART signals, but my PIC runs at 5 V because the sensor needs it. On the TX side, R4 (1.8 kΩ) and R5 (3.3 kΩ) form a voltage divider that brings my 5 V signal down to about 3.2 V before it reaches the hub. On the RX side, I'll set RC3 to TTL input level so the PIC reads the hub's 3.3 V as a logic high, and R6 (1 kΩ) is in series to protect the pin. Jumpers JP2 and JP3 let me disconnect TX and RX from the ribbon, so I can test my board by itself before plugging into anyone else's (PR 2.5, PR 2.6).
+One thing I had to work around is that our team agreed on 5V UART signals On the TX side, R4 (1.8 kΩ) and R5 (3.3 kΩ) form a voltage divider that brings my 5 V signal down to about 3.2 V before it reaches the hub. On the RX side, I'll set RC3 to TTL input level so the PIC reads the hub's 3.3 V as a logic high, and R6 (1 kΩ) is in series to protect the pin. Jumpers JP2 and JP3 let me disconnect TX and RX from the ribbon, so I can test my board by itself before plugging into anyone else's (PR 2.5, PR 2.6).
 
 ### Debug
 
